@@ -1,0 +1,14 @@
+-r requirements.txt  # Include base requirements
+
+# Production server
+gunicorn>=20.1.0                 # WSGI server (Flask)
+uvicorn[standard]>=0.17.0        # ASGI server (FastAPI)
+gevent>=21.12.0                  # Async worker (optional)
+
+# Monitoring
+prometheus-client>=0.14.0        # Metrics collection
+sentry-sdk>=1.5.0                # Error tracking
+
+# Security
+bcrypt>=4.0.0                    # Password hashing
+python-keycloak>=2.10.0          # Official Keycloak client (optional)

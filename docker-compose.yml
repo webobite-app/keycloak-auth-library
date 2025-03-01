@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 
 services:
   keycloak:
@@ -6,21 +6,31 @@ services:
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-    command: ["start-dev"]
+    command: start-dev
     ports:
       - "8080:8080"
+    networks:
+      - auth-net
 
-  app:
+  auth-service:
     build: .
     environment:
-      KEYCLOAK_SERVER_URL: "http://keycloak:8080"
-      KEYCLOAK_REALM: "master"
-      KEYCLOAK_CLIENT_ID: "admin-cli"
-      KEYCLOAK_CLIENT_SECRET: "your-secret"
-      DATABASE_URL: "sqlite:////data/app.db"
+      KEYCLOAK_SERVER_URL: http://keycloak:8080
+      KEYCLOAK_REALM: master
+      KEYCLOAK_CLIENT_ID: auth-service
+      KEYCLOAK_CLIENT_SECRET: ${CLIENT_SECRET}
+      DATABASE_URL: sqlite:////data/auth.db
     volumes:
-      - ./data:/data
+      - auth-data:/data
     ports:
-      - "5000:5000"
+      - "8000:8000"
     depends_on:
       - keycloak
+    networks:
+      - auth-net
+
+networks:
+  auth-net:
+
+volumes:
+  auth-data:
