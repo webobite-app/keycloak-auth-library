@@ -2,7 +2,8 @@
 Production-grade secret management with multiple backends
 """
 from typing import Optional
-from pydantic import BaseSettings, SecretStr
+from pydantic_settings import BaseSettings
+from pydantic import SecretStr
 import hvac
 import boto3
 import os

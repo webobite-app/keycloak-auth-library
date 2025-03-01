@@ -1,6 +1,5 @@
-# app.py
 from flask import Flask
-from keycloak_auth.flask_integration import keycloak_auth  # Updated import path
+from keycloak_auth.flask_integration import keycloak_auth
 
 app = Flask(__name__)
 
