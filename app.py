@@ -1,13 +1,16 @@
+# app.py
 from flask import Flask
-from keycloak_auth.flask import keycloak_auth
+from keycloak_auth.flask_integration import keycloak_auth  # Updated import path
 
 app = Flask(__name__)
-app.keycloak_client = KeycloakClient(KeycloakSettings())
 
 @app.route("/protected")
 @keycloak_auth(required_roles=["admin"])
 def protected_route():
-    return {"user": g.user["id"]}
+    return {"message": "Authenticated successfully"}
+
+if __name__ == "__main__":
+    app.run()
 
 
 # from fastapi import FastAPI, Depends
