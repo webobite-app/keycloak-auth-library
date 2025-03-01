@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command: ["start-dev"]
+    ports:
+      - "8080:8080"
+
+  app:
+    build: .
+    environment:
+      KEYCLOAK_SERVER_URL: "http://keycloak:8080"
+      KEYCLOAK_REALM: "master"
+      KEYCLOAK_CLIENT_ID: "admin-cli"
+      KEYCLOAK_CLIENT_SECRET: "your-secret"
+      DATABASE_URL: "sqlite:////data/app.db"
+    volumes:
+      - ./data:/data
+    ports:
+      - "5000:5000"
+    depends_on:
+      - keycloak

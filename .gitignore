@@ -1,0 +1,69 @@
+.env# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+env/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Logs and databases
+logs/
+*.log
+*.sqlite
+*.db
+
+# Python cache
+*.pyc
+*.pyo
+*.pyd
+
+# IDE/editor specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Docker
+.dockerignore
+
+# FastAPI/Flask specific
+instance/
+*.env
+.env.local
+.env.test
+.env.production
+
+# pytest cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+*.cover
+coverage.xml
+
+# Mypy
+.mypy_cache/
+
+# Pylint
+.pylint.d/
+
+# Black formatter
+.cache/
+
+# Local .tox environments
+.tox/
